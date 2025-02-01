@@ -82,7 +82,3 @@
     </div>
 @endif
 
-<!-- Debug information -->
-<div class="mb-4">
-    Total Members: {{ $team_members->count() }}
-</div>

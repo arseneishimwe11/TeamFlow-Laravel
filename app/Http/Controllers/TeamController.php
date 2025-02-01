@@ -82,8 +82,10 @@ class TeamController extends Controller
             ->firstOrFail();
 
         $user = User::create([
+            'name' => request()->input('name', 'New Team Member'),
             'email' => $invitation->email,
-            'role' => $invitation->role
+            'role' => $invitation->role,
+            'password' => Hash::make(Str::random(12))
         ]);
 
         $invitation->delete();
