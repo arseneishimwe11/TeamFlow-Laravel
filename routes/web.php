@@ -30,6 +30,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::middleware(['auth'])->group(function () {
+        Route::resource('tasks', TaskController::class);
+    });
+    
 
 });
 

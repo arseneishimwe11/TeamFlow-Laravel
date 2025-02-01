@@ -40,7 +40,12 @@
 | Frontend      | Bootstrap |
 | Database      | SQLite |
 | Authentication | Laravel Breeze |
-| 
+| Mail Service | Mailtrap |
+| Icons | Bootstrap Icons |
+| JavaScript | Alpine.js |
+| Package Manager | Composer, NPM |
+| Version Control | Git |
+| Asset Bundling | Vite |
 
 ## Installation Guide
 
@@ -80,16 +85,13 @@
    ```
    Visit `http://localhost:8000` in your browser.
    
-7. **Access Admin Panel**
-   Visit `http://localhost:8000/admin` to access the admin panel.
-
-8. **Access User Panel**
+7. **Access User Panel**
    Visit `http://localhost:8000` to access the user panel.
   
-9. **Explore Features**
+8. **Explore Features**
    Explore the project management features and start managing your projects!
    
-10. **Contribute**
+9. **Contribute**
    Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ## License

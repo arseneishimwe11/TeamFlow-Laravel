@@ -24,21 +24,25 @@ class TeamController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'role' => 'required|string|in:member,admin',
-            'password' => \Str::random(10) // Generate random password for team member
+            'role' => 'required|string|in:member,admin'
         ]);
+
+        $password = Str::random(10);
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'role' => $validated['role'],
-            'password' => Hash::make($validated['password'])
+            'password' => Hash::make($password)
         ]);
 
-        Mail::to($user->email)->send(new WelcomeTeamMember($validated['password'], $validated['name']));
-        
+        $user->sendEmailVerificationNotification();
+        Mail::to($user->email)->send(new WelcomeTeamMember($password, $validated['name'], $validated['email']));
+
         return redirect()->route('team.index')->with('success', 'Team member added successfully');
     }
+
+
     public function invite()
     {
         return view('team.invite');
@@ -52,7 +56,7 @@ class TeamController extends Controller
         ]);
 
         $token = Str::random(32);
-        
+
         // Store invitation
         $invitation = TeamInvitation::create([
             'email' => $validated['email'],

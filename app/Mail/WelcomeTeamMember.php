@@ -12,11 +12,13 @@ class WelcomeTeamMember extends Mailable
 
     public $password;
     public $name;
+    public $email;
 
-    public function __construct($password, $name)
+    public function __construct($password, $name, $email)
     {
         $this->password = $password;
         $this->name = $name;
+        $this->email = $email;
     }
 
     public function build()
